@@ -15,21 +15,29 @@ public class PhotoQuiz {
 	public static void main(String[] args) throws Exception {
 		Frame quizWindow = new Frame();
 		quizWindow.setVisible(true);
-
+		
+		int score = 0;
+		
 		// 1. find an image on the internet, and put its URL in a String variable (from your browser, right click on the image, and select “Copy Image URL”)
 		String img1url = "https://images-na.ssl-images-amazon.com/images/I/81AQmbC2kJL._SL1500_.jpg";
 		String img2url = "http://www.emilydenisephotography.com/photos/IMG_2642ab.png";
 		String img3url = "https://lh3.googleusercontent.com/Rjo-L26ErvSoywToIne5nnmcLokU3dFClZAi1TmFjg7nFQz9Gx-qz-Il0TFcz65IODE=h310";
+		String img4url = "https://i.pinimg.com/736x/de/77/08/de7708bd51d4e5154d6ca604bc473f51--grip-in-fashion.jpg";
+		String img5url = "https://images-na.ssl-images-amazon.com/images/I/51XKXiUrAOL._SX466_.jpg";
 		
 		// 2. create a variable of type "Component" that will hold your image
 		Component img1;
 		Component img2;
 		Component img3;
+		Component img4;
+		Component img5;
 		
 		// 3. use the "createImage()" method below to initialize your Component
 		img1 = createImage(img1url);
 		img2 = createImage(img2url);
 		img3 = createImage(img3url);
+		img4 = createImage(img4url);
+		img5 = createImage(img5url);
 		
 		// 4. add the image to the quiz window
 		quizWindow.add(img1);
@@ -41,9 +49,10 @@ public class PhotoQuiz {
 		String ans1 = JOptionPane.showInputDialog("What kind of reflective polish is this?");
 		
 		// 7. print "CORRECT" if the user gave the right answer
-		if (ans1.equals("holographic"))
+		if (ans1.equals("holographic") || ans1.equals("holo"))
 		{
 			JOptionPane.showMessageDialog(null, "Correct!");
+			score += 1;
 		}
 		
 		// 8. print "INCORRECT" if the answer is wrong
@@ -71,18 +80,74 @@ public class PhotoQuiz {
 		if (ans2.equals("multichrome"))
 		{
 			JOptionPane.showMessageDialog(null, "Correct!");
+			score += 1;
 		}
 		
 		else
 		{
 			JOptionPane.showMessageDialog(null, "Wrong, it is multichrome");
 		}
+		quizWindow.remove(img2);
 		
+		//-----img3-----
 		
 		quizWindow.add(img3);
 		quizWindow.pack();
 		
+		String ans3 = JOptionPane.showInputDialog("What kind of reflective polish is this?");
 		
+		if (ans3.equals("iridescent"))
+		{
+			JOptionPane.showMessageDialog(null, "Correct!");
+			score += 1;
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Wrong, it is iridescent");
+		}
+		quizWindow.remove(img3);
+		
+		//-----img4-----
+		
+		quizWindow.add(img4);
+		quizWindow.pack();
+		
+		String ans4 = JOptionPane.showInputDialog("What kind of reflective polish is this?");
+		
+		if(ans4.equals("dual chrome"))
+		{
+			JOptionPane.showMessageDialog(null, "Correct!");
+			score += 1;
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Wrong, it is dual chrome");
+		}
+		
+		quizWindow.remove(img4);
+		
+		//-----img5-----
+		
+		quizWindow.add(img5);
+		quizWindow.pack();
+		
+		String ans5 = JOptionPane.showInputDialog("What kind of reflective polish is this?");
+		
+		if(ans5.equals("chrome") || ans5.equals("mirror chrome") || ans5.equals("silver chrome") || ans5.equals("silver mirror chrome"))
+		{
+			JOptionPane.showMessageDialog(null, "Correct!");
+			score += 1;
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Wrong, it is silver mirror chrome");
+		}
+		quizWindow.remove(img5);
+		
+		//-----Score-----
+		quizWindow.pack();
+		int percentage = score/5 * 100;
+		JOptionPane.showMessageDialog(null, "Your score is " + score + " out of 5 or " + percentage + "%"); 
 
 	}
 
